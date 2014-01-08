@@ -169,7 +169,8 @@ secondStateIconName:(NSString *)secondIconName
     UIGestureRecognizerState state = [gesture state];
     CGPoint translation = [gesture translationInView:self];
     CGPoint velocity = [gesture velocityInView:self];
-    CGFloat percentage = [self percentageWithOffset:CGRectGetMinX(self.contentView.frame) relativeToWidth:CGRectGetWidth(self.bounds)];
+//    CGFloat percentage = [self percentageWithOffset:CGRectGetMinX(self.contentView.frame) relativeToWidth:CGRectGetWidth(self.bounds)];
+    CGFloat percentage = [self percentageWithOffset:CGRectGetMinX(self.contentView.frame) relativeToWidth:320];
     NSTimeInterval animationDuration = [self animationDurationWithVelocity:velocity];
     _direction = [self directionWithPercentage:percentage];
     
@@ -271,7 +272,8 @@ secondStateIconName:(NSString *)secondIconName
 }
 
 - (NSTimeInterval)animationDurationWithVelocity:(CGPoint)velocity {
-    CGFloat width = CGRectGetWidth(self.bounds);
+//    CGFloat width = CGRectGetWidth(self.bounds);
+    CGFloat width = 320;
     NSTimeInterval animationDurationDiff = kMCDurationHightLimit - kMCDurationLowLimit;
     CGFloat horizontalVelocity = velocity.x;
     
@@ -393,7 +395,8 @@ secondStateIconName:(NSString *)secondIconName
 #pragma mark - Movement
 
 - (void)animateWithOffset:(CGFloat)offset {
-    CGFloat percentage = [self percentageWithOffset:offset relativeToWidth:CGRectGetWidth(self.bounds)];
+//    CGFloat percentage = [self percentageWithOffset:offset relativeToWidth:CGRectGetWidth(self.bounds)];
+    CGFloat percentage = [self percentageWithOffset:offset relativeToWidth:320];
     
     // Image Name
     NSString *imageName = [self imageNameWithPercentage:percentage];
@@ -425,29 +428,35 @@ secondStateIconName:(NSString *)secondIconName
     
     if (isDragging) {
         if (percentage >= 0 && percentage < kMCStop1) {
-            position.x = [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+//            position.x = [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+            position.x = [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:320];
         }
         
         else if (percentage >= kMCStop1) {
-            position.x = [self offsetWithPercentage:percentage - (kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+//            position.x = [self offsetWithPercentage:percentage - (kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+            position.x = [self offsetWithPercentage:percentage - (kMCStop1 / 2) relativeToWidth:320];
         }
         
         else if (percentage < 0 && percentage >= -kMCStop1) {
-            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+//            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:320];
         }
         
         else if (percentage < -kMCStop1) {
-            position.x = CGRectGetWidth(self.bounds) + [self offsetWithPercentage:percentage + (kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+//            position.x = CGRectGetWidth(self.bounds) + [self offsetWithPercentage:percentage + (kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+            position.x = CGRectGetWidth(self.bounds) + [self offsetWithPercentage:percentage + (kMCStop1 / 2) relativeToWidth:320];
         }
     }
     
     else {
         if (_direction == MCSwipeTableViewCellDirectionRight) {
-            position.x = [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+//            position.x = [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+            position.x = [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:320];
         }
         
         else if (_direction == MCSwipeTableViewCellDirectionLeft) {
-            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+//            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:CGRectGetWidth(self.bounds)];
+            position.x = CGRectGetWidth(self.bounds) - [self offsetWithPercentage:(kMCStop1 / 2) relativeToWidth:320];
         }
         
         else {
@@ -469,11 +478,14 @@ secondStateIconName:(NSString *)secondIconName
     CGFloat origin;
     
     if (direction == MCSwipeTableViewCellDirectionLeft)
-        origin = -CGRectGetWidth(self.bounds);
+//        origin = -CGRectGetWidth(self.bounds);
+        origin = -320;
     else
-        origin = CGRectGetWidth(self.bounds);
+//        origin = CGRectGetWidth(self.bounds);
+        origin = 320;
     
-    CGFloat percentage = [self percentageWithOffset:origin relativeToWidth:CGRectGetWidth(self.bounds)];
+//    CGFloat percentage = [self percentageWithOffset:origin relativeToWidth:CGRectGetWidth(self.bounds)];
+    CGFloat percentage = [self percentageWithOffset:origin relativeToWidth:320];
     CGRect rect = self.contentView.frame;
     rect.origin.x = origin;
     
