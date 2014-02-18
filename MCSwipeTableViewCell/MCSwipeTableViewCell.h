@@ -41,7 +41,8 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode) {
 - (void)swipeTableViewCellDidEndSwiping:(MCSwipeTableViewCell *)cell;
 
 // When the user is dragging, this method is called and return the dragged percentage from the border
-- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didSwipWithPercentage:(CGFloat)percentage;
+//- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didSwipWithPercentage:(CGFloat)percentage;
+- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didSwipWithOffset:(CGFloat)offset;
 
 // When the user releases the cell, after swiping it, this method is called
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode;
@@ -65,6 +66,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode) {
 // Percentage of when the first and second action are activated, respectively
 @property (nonatomic, assign) CGFloat firstTrigger;
 @property (nonatomic, assign) CGFloat secondTrigger;
+@property (nonatomic, assign) CGFloat trigger;
 
 // Color for background, when any state hasn't triggered yet
 @property (nonatomic, strong) UIColor *defaultColor;
