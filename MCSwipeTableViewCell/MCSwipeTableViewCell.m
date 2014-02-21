@@ -168,7 +168,7 @@ secondStateIconName:(NSString *)secondIconName
 #pragma mark - Handle Gestures
 
 - (void)handlePanGestureRecognizer:(UIPanGestureRecognizer *)gesture {
-    NSLog(@"handlePanGestureRecognizer:");
+//    NSLog(@"handlePanGestureRecognizer:");
     // The user does not want you to be dragged!
     if (!_shouldDrag) return;
     
@@ -178,7 +178,7 @@ secondStateIconName:(NSString *)secondIconName
 //    CGFloat percentage = [self percentageWithOffset:CGRectGetMinX(self.contentView.frame) relativeToWidth:CGRectGetWidth(self.bounds)];
     
     CGFloat offset = CGRectGetMinX(self.contentView.frame);
-    NSLog(@"offset:%f", offset);
+//    NSLog(@"offset:%f", offset);
     
     NSTimeInterval animationDuration = [self animationDurationWithVelocity:velocity];
 //    _direction = [self directionWithPercentage:percentage];
@@ -481,7 +481,7 @@ secondStateIconName:(NSString *)secondIconName
 #pragma mark - Movement
 
 - (void)animateWithOffset:(CGFloat)offset {
-    NSLog(@"animateWithOffset:offset");
+//    NSLog(@"animateWithOffset:offset");
 
 //    CGFloat percentage = [self percentageWithOffset:offset relativeToWidth:CGRectGetWidth(self.bounds)];
     
@@ -562,7 +562,7 @@ secondStateIconName:(NSString *)secondIconName
 
 
 - (void)slideImageWithOffset:(CGFloat)offset imageName:(NSString *)imageName isDragging:(BOOL)isDragging {
-    NSLog(@"slideImageWithOffset:%f", offset);
+//    NSLog(@"slideImageWithOffset:%f", offset);
     if (!imageName) return;
     
     UIImage *slidingImage = [UIImage imageNamed:imageName];
