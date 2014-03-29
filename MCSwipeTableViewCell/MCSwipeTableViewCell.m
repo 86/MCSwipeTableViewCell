@@ -99,7 +99,15 @@ secondStateIconName:(NSString *)secondIconName
     [_colorIndicatorView addSubview:_slidingImageView];
     
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestureRecognizer:)];
-    [self addGestureRecognizer:_panGestureRecognizer];
+    
+    UIView *touchDetectView = [[UIView alloc] initWithFrame:CGRectMake(10, 0, self.bounds.size.width - 20,self.bounds.size.height)];
+    touchDetectView.backgroundColor = [UIColor clearColor];
+    touchDetectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+//    [self addGestureRecognizer:_panGestureRecognizer];
+    [touchDetectView addGestureRecognizer:_panGestureRecognizer];
+    [self addSubview:touchDetectView];
+    
     [_panGestureRecognizer setDelegate:self];
     
     _isDragging = NO;
